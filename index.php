@@ -1,6 +1,6 @@
 <?php
 ob_start();
-$token = "https://androidrootmods.github.io/bot/";
+$token = "7009630274:AAFukVLRTMu5EO6OuV3EHpMdqGYkHQrqw2E";
 define('API_KEY', $token);
 function bot($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/"
