@@ -1893,3 +1893,27 @@ code {
 .custom-margin {
     margin: 1rem;
 }
+
+.image-container {
+    position: relative;
+    width: 48rem;
+    /* أو أي عرض تفضله */
+    overflow: hidden;
+    height: 800px;
+    /* أو أي ارتفاع تفضله */
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+    /* تأثير انتقال سلس */
+}
+
+.swipe-left {
+    transform: translateX(-100%);
+}
+
+.swipe-right {
+    transform: translateX(100%);
+}
