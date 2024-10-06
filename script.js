@@ -1,32 +1,29 @@
-const images = [
-    "https://androidrootmods.github.io/RcStore/RcWhatsApp/WhatsApp.webp",
-    "https://androidrootmods.github.io/RcStore/RcWhatsApp/WhatsApp.webp", // اضف عنوان الصورة الثانية
-    "https://androidrootmods.github.io/RcStore/RcWhatsApp/WhatsApp.webp", // اضف عنوان الصورة الثالثة
-];
+let slideIndex = 1;
+showSlides(slideIndex);
 
-let currentIndex = 0;
-
-const imageElement = document.getElementById('image');
-
-function changeImage(direction) {
-    if (direction === 'left') {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-    } else if (direction === 'right') {
-        currentIndex = (currentIndex + 1) % images.length;
-    }
-
-    imageElement.classList.add(direction === 'left' ? 'swipe-left' : 'swipe-right');
-
-    setTimeout(() => {
-        imageElement.src = images[currentIndex];
-        imageElement.classList.remove(direction === 'left' ? 'swipe-left' : 'swipe-right');
-    }, 500); // مدة التأثير
+function plusSlides(n) {
+    showSlides(slideIndex += n);
 }
 
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowLeft') {
-        changeImage('left');
-    } else if (event.key === 'ArrowRight') {
-        changeImage('right');
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
     }
+    slides[slideIndex - 1].style.display = "block";
+}
+
+document.querySelector(".prev").addEventListener("click", function() {
+    plusSlides(-1);
 });
+
+document.querySelector(".next").addEventListener("click", function() {
+    plusSlides(1);
+});
+
+setInterval(function() {
+    plusSlides(1);
+}, 3000); // 3000 = 3 ثواني
